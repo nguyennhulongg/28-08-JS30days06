@@ -1,0 +1,64 @@
+html {
+    background-color: #ffc600;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    align-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    z-index: 1;
+}
+
+.input {
+    height: 46.4px;
+    width: 420px;
+    border: 10px;
+    padding: 20px;
+    border: 10px solid #F7F7F7;
+    border-radius: 5px;
+    font-size: 40px;
+    text-align: center;
+    outline: none;
+}
+
+.list-content {
+    list-style-type: none;
+    width: 360px;
+    margin-top: -3px;
+}
+
+.list-content li {
+    height: 22.4px;
+    width: 360px;
+    padding: 20px;
+    margin-left: -40px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #D8D8D8;
+    border-top: 1px solid #D8D8D8;
+    margin-bottom: -0.7px;
+}
+
+.list-content li:nth-child(odd) {
+    transform: perspective(100px) rotateX(-3deg) translateY(3px);
+    background: linear-gradient(to top, #ffffff 0%,#EFEFEF 100%);
+}
+
+.list-content li:nth-child(even) {
+    transform: perspective(100px) rotateX(4deg) translateY(2px) scale(1.001);
+    background: linear-gradient(to bottom, #ffffff 0%,#EFEFEF 100%);
+}
+
+.population {
+    float: right;
+}

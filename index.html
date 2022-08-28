@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="form">
+                <input type="text" class="input" placeholder="City or State">
+            </div>
+            <div class="list">
+                <ul class="list-content">
+                        <li>Filter For A City</li>
+                        <li>Or A State</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const point = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+        const cities = [];
+        
+        fetch(point)
+        .then(x => x.json())
+        .then(data => cities.push(...data))
+
+        function find(wordToMatch, cities) {
+            return cities.filter(placeSuggest => {
+                const b = new RegExp(wordToMatch, 'gi');
+                return placeSuggest.city.match(b) || placeSuggest.state.match(b);
+            })
+        }
+
+        function display() {
+            const matchArray = find(this.value, cities);
+            const html = matchArray.map(placeSuggest => {
+                return `
+                <li>
+                    <span class="name">${placeSuggest.city}, ${placeSuggest.state}</span>
+                    <span class="population">${placeSuggest.population}</span>
+                </li>
+                
+                `;
+            }).join('');
+            suggestion.innerHTML = html;
+        }
+
+        const search = document.querySelector('.input')
+        const suggestion = document.querySelector('.list-content');
+        
+        search.addEventListener('change', display);
+        search.addEventListener('keyup', display);
+
+
+    </script>
+
+</body>
+</html>
